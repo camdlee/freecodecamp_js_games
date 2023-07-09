@@ -5,13 +5,14 @@ const resultDisplay = document.getElementById('result')
 const possibleChoices = document.querySelectorAll('button')
 let userChoice 
 let computerChoice
-
+let result
 
 // Your Choice
 possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click', (event)=>{
     userChoice = event.target.id
     userChoiceDisplay.innerHTML = userChoice
     generateComputerChoice()
+    getResult()
 }))
 
 // Function to generate Computer Choice
@@ -26,4 +27,31 @@ const generateComputerChoice = () => {
         computerChoice = 'scissors'
     }
     computerChoiceDisplay.innerHTML = computerChoice
+}
+
+
+// Function to calculate result
+const getResult = () => {
+    if(computerChoice === userChoice){
+        result = "It's a tie!"
+    }
+    if(computerChoice === 'rock' && userChoice === 'paper'){
+        result = 'You win!'
+    }
+    if(computerChoice === 'rock' && userChoice === 'scissors'){
+        result = 'You lose :('
+    }
+    if(computerChoice === 'scissors' && userChoice === 'paper'){
+        result = 'You lose :('
+    }
+    if(computerChoice === 'scissors' && userChoice === 'rock'){
+        result = 'You win!'
+    }
+    if(computerChoice === 'paper' && userChoice === 'rock'){
+        result = 'You lose :('
+    }
+    if(computerChoice === 'paper' && userChoice === 'scissors'){
+        result = 'You win!'
+    }
+    resultDisplay.innerHTML = result
 }

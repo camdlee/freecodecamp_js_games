@@ -3,17 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>Rock Paper Scissors Game</title>
 </head>
 <body>
-
-    <h2>Computer Choice: <span id="computer-choice"></span></h2>
-    <h2>Your Choice: <span id="user-choice"></span></h2>
-    <h2>Result: <span id="result"></span></h2>
-
-    <button id="rock">rock</button>
-    <button id="paper">paper</button>
-    <button id="scissors">scissors</button>
+    <div class="primary">
+        <div class="primary-card">
+            <h2>Computer Choice: <span id="computer-choice"></span></h2>
+        </div>
+        <div class="primary-card">
+            <h2>Your Choice: <span id="user-choice"></span></h2>
+        </div>
+    </div>
+    <div class="choices">
+        <button id="rock">rock</button>
+        <button id="paper">paper</button>
+        <button id="scissors">scissors</button>
+    </div>
+    <div class="result">
+        <h2>Result: <span id="result"></span></h2>
+    </div>
 
     <script src="app.js" charset="utf-8"></script>
 </body>

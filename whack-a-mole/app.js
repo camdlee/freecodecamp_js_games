@@ -6,6 +6,8 @@ const score = document.querySelector('#score')
 
 let result = 0
 let moleSquare
+let currentTime = 60
+let timerId = null
 
 // Function to randomize where mole is located in grid
 const randomSquare = () =>{
@@ -27,7 +29,7 @@ const randomSquare = () =>{
 // Function to calculate score
 squares.forEach(square=> {
     // adding an event listener where for each square it will check to see if the mouse is in the same square as the mole
-    square.addEventListener('movedown', ()=>{
+    square.addEventListener('mousedown', () => {
         if (square.id == moleSquare){
             result++
             score.textContent = result
@@ -39,9 +41,23 @@ squares.forEach(square=> {
 
 // Function to move mole on a timer
 const moveMole = () => {
-    let timerId = null
     // setInterval will call the function in the 1st argument, 2nd argument is time in ms
-    timerId = setInterval(randomSquare, 1000)
+    timerId = setInterval(randomSquare, 700)
 }
 
-// moveMole()
+moveMole()
+
+// Function to count down clock
+const countDown = () => {
+    currentTime--
+    timeLeft.innerHTML = currentTime
+
+    if(currentTime == 0){
+        clearInterval(countDownTimerId)
+        clearInterval(timerId)
+        alert('Game Over! Your final score is ' + result)
+    }
+}
+
+let countDownTimerId = setInterval(countDown, 1000)
+countDown()
